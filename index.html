@@ -3,22 +3,46 @@
 <head>
 <title>Temperature Converter Challenge</title>
 <meta lang="eng" charset="utf-8">
+<script>
+    function calculateTemp(){
+        var x = document.getElementById("inputTemperature").value ;
+        var displayString ="";
+        
+        var y = document.querySelector('input[name="UOM"]:checked').value;
 
+        if (y=="Celsius"){
+          var z=(x*1.8)+32;
+          
+          displayString= "Converted Temperature is " + z + " Farenheit" ;
+
+        }
+        else{
+          var z=(x-32)/1.8;
+          displayString= "Converted Temperature is " + z + " Farenheit" ;
+        }
+        
+        document.getElementById("convertedTemp").innerHTML=  displayString;
+        
+    
+    }
+</script>
 
 </head>
 
 <body>
 
-  <input type="number" placeholder="Enter Value of Temperature" name="InputTemperature">
-  <input type="radio" id="Celsius" name="Unit" value="Celsius">
+  <input type="number" placeholder="Enter Value of Temperature" name="inputTemperature" id="inputTemperature">
+  <input type="radio" id="Celsius" name="UOM" value="Celsius" checked>
   <label for="Celsius">Celsius</label>
-  <input type="radio" id="Farenheit" name="Unit" value="Farenheit">
+  <input type="radio" id="Farenheit" name="UOM" value="Farenheit">
   <label for="Farenheit"> Farenheit</label>
 
+
+
+  <button onclick="calculateTemp()"> Convert</button>
+  <p id="convertedTemp"></p>
   
-
-  <button> Convert</button>
-
-
+  
+  
 
 </body>
