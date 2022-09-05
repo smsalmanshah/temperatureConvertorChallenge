@@ -27,22 +27,62 @@
     }
 </script>
 
+<style>
+  span.bolded{
+    font-weight: bold;
+   }
+
+  input[type="number"]{
+    font-weight: bold;
+    font-family: monospace;
+  }
+
+  div.inputArea{
+    
+    box-shadow: 2px 2px 1px 1px  #AAAA, -2px -2px 1px 1px  #AAAA  ;
+      
+    ;
+
+  }
+  button[name="convertButton"]:hover{
+    background-color: #fff;
+  }
+  button[name="convertButton"]:active{
+    background-color: #888;
+  }
+
+  input[type="number"]:hover:not(.active) {
+    background-color: #CCC;
+  }
+
+  label:hover{
+    color: #888;
+  }
+
+  label:active{
+    color: #000;
+    font-weight: bolder;
+  }
+</style>
 </head>
 
 <body>
-
-  <input type="number" placeholder="Enter Value of Temperature" name="inputTemperature" id="inputTemperature">
-  <input type="radio" id="Celsius" name="UOM" value="Celsius" checked>
-  <label for="Celsius">Celsius</label>
-  <input type="radio" id="Farenheit" name="UOM" value="Farenheit">
-  <label for="Farenheit"> Farenheit</label>
-
-
-
-  <button onclick="calculateTemp()"> Convert</button>
-  <p id="convertedTemp"></p>
+<h1>
+  Temperature Converter
+</h1>
+  <div class="inputArea">
+    <p> <span class="bolded">Step 1:</span> Enter the temperature and select the unit</p>
+    <input type="number" placeholder="Enter value here" name="inputTemperature" id="inputTemperature">
+    <input type="radio" id="Celsius" name="UOM" value="Celsius" checked>
+    <label for="Celsius">Celsius</label>
+    <input type="radio" id="Farenheit" name="UOM" value="Farenheit">
+    <label for="Farenheit"> Farenheit</label>
+    <p> <strong>Step 2:</strong> Click on the button to convert</p>
+    <button name="convertButton" onclick="calculateTemp()"> Convert</button>
   
-  
+  </div>
+
+    <p id="convertedTemp"></p>
   
 
 </body>
