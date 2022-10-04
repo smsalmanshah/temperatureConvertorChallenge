@@ -24,6 +24,54 @@
         document.getElementById("convertedTemp").innerHTML=  displayString;
         
     
+    
+    
+      }
+    
+      function tempconverter2(){
+    var inputValue = Number(document.getElementById("inputTemp2").value);
+    var inputUOM =   document.querySelector("input[name=UOMofinput]:checked").value;
+    var outputUOM = document.getElementById("idofoutputUOM").value;
+    var outCelsius;
+    var outFarenheit;
+    var outKelvin;
+
+    if(inputUOM == "Celsius2"){
+      outCelsius=inputValue;
+      outFarenheit= (inputValue*1.8)+32;
+      outKelvin= inputValue+273;
+
+    } else if( inputUOM =="Farenheit2")
+    {
+      outCelsius= (inputValue-32)/1.8;
+      outFarenheit= inputValue;
+      outKelvin= outCelsius+273.15;
+    } else if( inputUOM == "Kelvin2")
+    {
+      outCelsius= inputValue-273.15;
+      outFarenheit= (outCelsius*1.8)+32;
+      outKelvin= inputValue;
+    }
+    
+    
+    //document.getElementById("convertedTemp2").innerHTML= outCelsius+"C \n"+outFarenheit+"F \n"+outKelvin+"K";
+    //document.getElementById("convertedTemp2").innerHTML=outKelvin;
+
+    switch (outputUOM){
+      case "Celsius" :
+        document.getElementById("convertedTemp2").innerHTML=outCelsius+ " C";
+        break;
+      case "Farenheit" :
+        document.getElementById("convertedTemp2").innerHTML=outFarenheit+ " F";
+        break;
+      case "Kelvin" :
+        document.getElementById("convertedTemp2").innerHTML=outKelvin+ " K";
+    }
+    
+      
+
+    //document.getElementById("convertedTemp2").innerHTML= x;
+
     }
 </script>
 
@@ -68,7 +116,7 @@
 
 <body>
 <h1>
-  Temperature Converter
+  Temperature Converter 1
 </h1>
   <div class="inputArea">
     <p> <span class="bolded">Step 1:</span> Enter the temperature and select the unit</p>
@@ -85,4 +133,39 @@
     <p id="convertedTemp"></p>
   
 
+    <h1>
+    Temperature Converter 2
+  </h1>
+    <div class="inputArea">
+      <p> <span class="bolded">Step 1:</span> Enter the temperature</p>
+      <input type="number" placeholder="Enter number here" name="inputTemp2" id="inputTemp2" value="0">
+
+      <p> <span class="bolded">Step 2:</span> Select Unit</p>
+      <span>  Convert from: </span>
+      <input type="radio" name="UOMofinput" value="Celsius2" id="Celsius2" checked >
+      <label for="Celsius2">Celsius</label>
+
+      <input type="radio" name="UOMofinput" value="Farenheit2" id="Farenheit2">
+      <label for="Farenheit2">Farenheit</label>
+
+      <input type="radio" name="UOMofinput" value="Kelvin2" id="Kelvin2">
+      <label for="Kelvin2">Kelvin</label>
+      <br>
+      
+      
+      <label for="idofoutputUOM">Convert to </label>
+      <select name="convertingunit" id="idofoutputUOM">
+        <option value="Celsius">Celsius</option>
+        <option value="Farenheit">Farenheit</option>
+        <option value="Kelvin">Kelvin</option>
+
+      </select>
+      <p> <span class="bolded">Step 3: </span>Click on button to convert</p>
+      <button onclick="tempconverter2()"> Convert</button>
+    
+
+
+    </div>
+  <p id="convertedTemp2"></p>
+      
 </body>
